@@ -1,5 +1,12 @@
-import React, { useReducer, useState, useCallback } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-native';
+import { useReducer, useState, useCallback } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
 
 // Редюсер
 const workoutReducer = (state, action) => {
@@ -21,10 +28,8 @@ const initialState = {
   workouts: [],
 };
 
-
 const FitnessTracker = () => {
-
-    // Использование useReducer
+  // Использование useReducer
   const [state, dispatch] = useReducer(workoutReducer, initialState);
   const [newWorkoutTime, setNewWorkoutTime] = useState('');
 
@@ -45,7 +50,9 @@ const FitnessTracker = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Мои тренировки</Text>
-      <Text style={styles.text}>Завершенные тренировки: {state.completedWorkouts}</Text>
+      <Text style={styles.text}>
+        Завершенные тренировки: {state.completedWorkouts}
+      </Text>
 
       <FlatList
         data={state.workouts}

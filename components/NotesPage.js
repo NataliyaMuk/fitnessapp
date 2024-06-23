@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
-
+import { useState, useEffect } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  ToastAndroid,
+} from 'react-native';
 
 const NotesPage = () => {
   const [todos, setTodos] = useState([]); // Состояние для списка дел
@@ -8,7 +15,7 @@ const NotesPage = () => {
   const [newApproach, setNewApproach] = useState(''); // Подходы
   const [newRepeat, setNewRepeat] = useState(''); // Повторы
 
- useEffect(() => {
+  useEffect(() => {
     const saveData = async () => {
       try {
         await AsyncStorage.setItem('todos', JSON.stringify(todos));
@@ -22,10 +29,20 @@ const NotesPage = () => {
 
   const addTodo = () => {
     if (newTodo !== '') {
-      setTodos([...todos,{ id: Date.now(), text: newTodo, approach: newApproach, repeat: newRepeat,  completed: false }]);
+      setTodos([
+        ...todos,
+        {
+          id: Date.now(),
+          text: newTodo,
+          approach: newApproach,
+          repeat: newRepeat,
+          completed: false,
+        },
+      ]);
       setNewTodo('');
       setNewApproach('');
       setNewRepeat('');
+      ToastAndroid.show('Задача добавлена!', ToastAndroid.SHORT);
     }
   };
 
@@ -34,11 +51,13 @@ const NotesPage = () => {
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(updatedTodos);
+    ToastAndroid.show('Статус задачи изменен!', ToastAndroid.SHORT);
   };
 
   const removeTodo = (id) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
+    ToastAndroid.show('Задача удалена!', ToastAndroid.SHORT);
   };
 
   const renderItem = ({ item }) => (

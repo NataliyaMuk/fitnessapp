@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, FlatList } from 'react-native';
+import { useState, useMemo } from 'react';
+import { View, Text } from 'react-native';
 
 const CalorieCalculator = () => {
   const [consumedCalories, setConsumedCalories] = useState(0);
-  const [burnedCaloriesFromExercise, setBurnedCaloriesFromExercise] = useState(0);
+  const [burnedCaloriesFromExercise, setBurnedCaloriesFromExercise] =
+    useState(0);
 
   const totalCalorieBalance = useMemo(() => {
     return consumedCalories - burnedCaloriesFromExercise;
@@ -13,25 +14,35 @@ const CalorieCalculator = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Калькулятор калорий</Text>
       <View style={styles.label}>
-        <Text style={styles.balance}>Съеденные калории: {totalCalorieBalance}</Text>
+        <Text style={styles.balance}>
+          Съеденные калории: {totalCalorieBalance}
+        </Text>
         <input
           type="number"
           value={consumedCalories}
-          onChange={(e) => setConsumedCalories(parseInt(e.target.value, 10) || '')}
+          onChange={(e) =>
+            setConsumedCalories(parseInt(e.target.value, 10) || '')
+          }
           style={styles.input}
         />
       </View>
 
       <View style={styles.label}>
-        <Text style={styles.balance}>Калории, сожженные во время тренировок: {totalCalorieBalance}</Text>
+        <Text style={styles.balance}>
+          Калории, сожженные во время тренировок: {totalCalorieBalance}
+        </Text>
         <input
           type="number"
           value={burnedCaloriesFromExercise}
-          onChange={(e) => setBurnedCaloriesFromExercise(parseInt(e.target.value, 10) || '')}
+          onChange={(e) =>
+            setBurnedCaloriesFromExercise(parseInt(e.target.value, 10) || '')
+          }
           style={styles.input}
         />
       </View>
-      <Text style={styles.balance}>Общий баланс калорий: {totalCalorieBalance}</Text>
+      <Text style={styles.balance}>
+        Общий баланс калорий: {totalCalorieBalance}
+      </Text>
     </View>
   );
 };

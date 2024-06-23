@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import UserContext from './UserContext';
 
-
 const MuscleGroupsScreen = ({ navigation }) => {
-
   const { username } = useContext(UserContext);
 
   const handlePress = (muscleGroup) => {
@@ -17,14 +15,26 @@ const MuscleGroupsScreen = ({ navigation }) => {
       case 'Грудные мышцы':
         return ['Жим гантелей лежа', 'Отжимания', 'Бабочка'];
       case 'Спина':
-        return ['Тяга штанги в наклоне', 'Подтягивания', 'Гиперэкстензии', 'Вертикальная тяга', 'Горизонтальная тяга'];
+        return [
+          'Тяга штанги в наклоне',
+          'Подтягивания',
+          'Гиперэкстензии',
+          'Вертикальная тяга',
+          'Горизонтальная тяга',
+        ];
       case 'Ягодицы и ноги':
-        return ['Присед', 'Румынская тяга', 'Выпады', 'Ягодичный мост', 'Разгибания ног'];
+        return [
+          'Присед',
+          'Румынская тяга',
+          'Выпады',
+          'Ягодичный мост',
+          'Разгибания ног',
+        ];
       case 'Плечи':
         return ['Махи гантелями в бок', 'Жим Арнольда'];
       case 'Бицепс & Трицепс':
         return ['Подъем гантелей на бицепс', 'Разгибания рук в кроссовере'];
-      
+
       default:
         return [];
     }
@@ -33,22 +43,26 @@ const MuscleGroupsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}> Выберите группу мышц</Text>
-      {username && (
-        <Text style={styles.header}>{username}!</Text>
-      )}
-      <TouchableOpacity style={styles.btn} onPress={() => handlePress('Грудные мышцы')}>
+      {username && <Text style={styles.header}>{username}!</Text>}
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => handlePress('Грудные мышцы')}>
         <Text style={styles.btnText}>Грудные мышцы</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => handlePress('Спина')}>
         <Text style={styles.btnText}>Спина</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btn} onPress={() => handlePress('Ягодицы и ноги')}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => handlePress('Ягодицы и ноги')}>
         <Text style={styles.btnText}>Ягодицы и ноги</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn} onPress={() => handlePress('Плечи')}>
         <Text style={styles.btnText}>Плечи</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btn} onPress={() => handlePress('Бицепс & Трицепс')}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => handlePress('Бицепс & Трицепс')}>
         <Text style={styles.btnText}>Бицепс & Трицепс</Text>
       </TouchableOpacity>
     </View>

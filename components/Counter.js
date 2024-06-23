@@ -1,4 +1,4 @@
-import React, { useDebugValue, useState, useRef, useEffect } from 'react';
+import { useDebugValue, useState, useRef, useEffect } from 'react';
 
 const FitnessTracker = () => {
   const [isTraining, setIsTraining] = useState(false);
@@ -64,7 +64,7 @@ const styles = {
     marginBottom: 16,
   },
   startButton: {
-    backgroundColor: '#f0e8ff', 
+    backgroundColor: '#f0e8ff',
     color: '#6a0572',
     padding: 10,
     borderRadius: 5,

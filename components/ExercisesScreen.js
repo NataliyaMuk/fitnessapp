@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const ExercisesScreen = ({ route }) => {
@@ -6,7 +5,9 @@ const ExercisesScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Упражнения для группы мышц: {muscleGroup}</Text>
+      <Text style={styles.header}>
+        Упражнения для группы мышц: {muscleGroup}
+      </Text>
       {exercises.map((exercise, index) => (
         <Text key={index} style={styles.exercise}>
           {exercise}
